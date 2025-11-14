@@ -1,0 +1,9 @@
+@use "../core/widgets/banner.scss" as core;
+
+@mixin widget($text-color, $banner-font-size) {
+    @include core.widget($text-color) {
+        font-size: $banner-font-size;
+        margin: 0;
+        @content;
+    }
+}
