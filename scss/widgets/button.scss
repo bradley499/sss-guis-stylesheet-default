@@ -1,0 +1,24 @@
+@use "sass:math";
+
+@mixin widget($spacing, $font-size, $text-color, $foreground-color, $active-color, $border-radius) {
+    button {
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: $active-color;
+        }
+
+        font-weight: bold;
+        line-height: calc(($font-size * 2) + math.div($spacing, 2));
+        background-color: $foreground-color;
+        border-radius: $border-radius;
+        border: none;
+        outline: none;
+        padding: 0 math.div($spacing, 2);
+        white-space: nowrap;
+        font-size: $font-size;
+        color: $text-color;
+        @content;
+    }
+}
