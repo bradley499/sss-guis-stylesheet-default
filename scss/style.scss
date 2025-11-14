@@ -1,0 +1,65 @@
+@use "core/body.scss";
+@use "core/widgets/layout.scss";
+@use "widgets/audio.scss";
+@use "widgets/banner.scss";
+@use "widgets/container.scss";
+@use "widgets/dialog.scss";
+@use "widgets/image.scss";
+@use "widgets/tabs.scss";
+@use "widgets/text.scss";
+@use "widgets/video.scss";
+
+// Required variables
+$banner-font-size: null !default;
+$font-size: null !default;
+$spacing: null !default;
+$border-radius: null !default;
+$text-color: null !default;
+$foreground-color: null !default;
+$accent-color: null !default;
+$active-color: null !default;
+
+// Validate required variables are set
+@if ($banner-font-size == null) {
+    @error "banner-font-size must be set";
+}
+@if ($font-size == null) {
+    @error "font-size must be set";
+}
+@if ($spacing == null) {
+    @error "spacing must be set";
+}
+@if ($border-radius == null) {
+    @error "border-radius must be set";
+}
+@if ($text-color == null) {
+    @error "text-color must be set";
+}
+@if ($foreground-color == null) {
+    @error "foreground-color must be set";
+}
+@if ($accent-color == null) {
+    @error "accent-color must be set";
+}
+@if ($active-color == null) {
+    @error "active-color must be set";
+}
+
+// Default stylesheet
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@include body.body($spacing, grey);
+
+@include container.widget($spacing, $font-size, $text-color, $foreground-color, $accent-color, $border-radius);
+@include layout.widget($spacing);
+@include tabs.widget($spacing, $font-size, $text-color, $foreground-color, $accent-color, $active-color, $border-radius);
+@include dialog.widget($spacing, $font-size, $text-color, $foreground-color, $accent-color, $active-color, $border-radius);
+
+@include banner.widget($text-color, $banner-font-size);
+@include text.widget($text-color, $font-size);
+@include audio.widget();
+@include image.widget();
+@include video.widget();
