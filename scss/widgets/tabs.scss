@@ -1,0 +1,27 @@
+@use "../core/widgets/tabs.scss" as core;
+@use "button.scss";
+@use "sass:math";
+
+@mixin widget($spacing, $font-size, $text-color, $foreground-color, $accent-color, $active-color, $border-radius) {
+    @include core.widget($spacing, $text-color) {
+        background-color: $accent-color;
+        padding: math.div($spacing, 2);
+        border-radius: $border-radius;
+        gap: math.div($spacing, 2);
+
+        &>div:first-child {
+            gap: math.div($spacing, 2);
+            @include button.widget($spacing, $font-size, $text-color, $foreground-color, $active-color, $border-radius) {
+                &[active] {
+                    background-color: $active-color;
+                }
+            }
+        }
+        &>div:last-child {
+            border-radius: $border-radius;
+            background-color: $foreground-color;
+            padding: math.div($spacing, 2);
+        }
+        @content;
+    }
+}
