@@ -1,0 +1,28 @@
+@use "../core/widgets/video.scss" as core;
+@use "multimedia.scss";
+
+@mixin fullscreen() {
+    background-color: unset;
+    border-radius: 0;
+    object-fit: contain;
+}
+
+@mixin widget() {
+    @include core.widget() {
+        @include multimedia.multimedia();
+
+        &:fullscreen {
+            @include fullscreen();
+        }
+
+        &:-moz-full-screen {
+            @include fullscreen();
+        }
+
+        &:-webkit-full-screen {
+            @include fullscreen();
+        }
+
+        @content;
+    }
+}

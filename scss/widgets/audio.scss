@@ -1,0 +1,13 @@
+@use "../core/widgets/audio.scss" as core;
+@use "multimedia.scss";
+
+@mixin widget() {
+    @include core.widget() {
+        @-moz-document url-prefix() {
+            & {
+                @include multimedia.multimedia();
+            }
+        }
+        @content;
+    }
+}

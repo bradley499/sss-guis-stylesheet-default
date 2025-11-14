@@ -1,0 +1,9 @@
+@use "../core/widgets/image.scss" as core;
+@use "multimedia.scss";
+
+@mixin widget() {
+    @include core.widget() {
+        @include multimedia.multimedia();
+        @content;
+    }
+}
