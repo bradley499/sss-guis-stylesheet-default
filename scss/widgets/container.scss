@@ -1,0 +1,35 @@
+@use "../core/widgets/container.scss" as core;
+@use "sass:math";
+
+@mixin widget($spacing, $banner-font-size, $text-color, $foreground-color, $accent-color, $border-radius) {
+    @include core.widget($spacing, $text-color) {
+        border: none;
+        background-color: $accent-color !important;
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+        margin: 0 !important;
+        padding: 0 !important;
+        & legend {
+            background-color: $accent-color;
+            width: 100%;
+            margin: 0;
+            padding: 0 $spacing;
+            line-height: (($border-radius * 2) + math.div($spacing, 2));
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
+            font-weight: bold;
+            font-size: $banner-font-size;
+        }
+        & *:last-child {
+            border-radius: $border-radius;
+            margin: 0 math.div($spacing, 2) math.div($spacing, 2);
+            padding: math.div($spacing, 2);
+            background-color: $foreground-color;
+            width: -webkit-fill-available;
+            width: -moz-available;
+            height: calc(100% - math.div($spacing, 2)); // Firefox fills too much space
+            height: -webkit-fill-available;
+        }
+        @content;
+    }
+}
