@@ -1,0 +1,25 @@
+@use "../core/widgets/dialog.scss" as core;
+@use "button.scss";
+
+@mixin widget($spacing, $font-size, $text-color, $foreground-color, $accent-color, $active-color, $border-radius) {
+    @include core.widget($spacing, $text-color, $text-color) {
+        border: none;
+        border-radius: $border-radius;
+        background-color: $accent-color;
+        max-width: 80dvw;
+        max-height: 80dvh;
+
+        &::backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        &>div:last-child {
+            @include button.widget($spacing, $font-size, $text-color, $foreground-color, $active-color, $border-radius) {
+                flex: 1 0 0;
+                min-width: fit-content;
+            }
+        }
+
+        @content;
+    }
+}
