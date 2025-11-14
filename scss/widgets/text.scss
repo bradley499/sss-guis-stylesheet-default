@@ -1,0 +1,8 @@
+@use "../core/widgets/text.scss" as core;
+
+@mixin widget($text-color, $font-size) {
+    @include core.widget($text-color) {
+        font-size: $font-size;
+        @content;
+    }
+}
