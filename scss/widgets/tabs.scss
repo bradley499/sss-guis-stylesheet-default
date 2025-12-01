@@ -11,17 +11,20 @@
 
         &>div:first-child {
             gap: math.div($spacing, 2);
+
             @include button.widget($spacing, $font-size, $text-color, $foreground-color, $active-color, $border-radius) {
                 &[active] {
                     background-color: $active-color;
                 }
             }
         }
+
         &>div:last-child {
             border-radius: $border-radius;
             background-color: $foreground-color;
             padding: math.div($spacing, 2);
         }
+
         @content;
     }
 }

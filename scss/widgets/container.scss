@@ -9,7 +9,8 @@
         border-bottom-right-radius: $border-radius;
         margin: 0 !important;
         padding: 0 !important;
-        & legend {
+
+        &>legend:first-child {
             background-color: $accent-color;
             width: 100%;
             margin: 0;
@@ -20,7 +21,8 @@
             font-weight: bold;
             font-size: $banner-font-size;
         }
-        & *:last-child {
+
+        &>*:last-child {
             border-radius: $border-radius;
             margin: 0 math.div($spacing, 2) math.div($spacing, 2);
             padding: math.div($spacing, 2);
@@ -30,6 +32,7 @@
             height: calc(100% - math.div($spacing, 2)); // Firefox fills too much space
             height: -webkit-fill-available;
         }
+
         @content;
     }
 }
